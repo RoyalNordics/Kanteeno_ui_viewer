@@ -5,313 +5,206 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanteeno UI Screen Viewer</title>
     <style>
-        * {
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
             background-color: #f4f4f4;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
         }
         
         header {
             background-color: #2c3e50;
-            color: #fff;
-            padding: 20px 0;
+            color: white;
             text-align: center;
+            padding: 1rem;
         }
         
-        h1 {
-            margin-bottom: 10px;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
         }
         
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-            background-color: #fff;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .tab-btn {
-            padding: 15px 20px;
-            background-color: #fff;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            flex: 1;
-            text-align: center;
-        }
-        
-        .tab-btn:hover {
-            background-color: #f0f0f0;
-        }
-        
-        .tab-btn.active {
-            background-color: #3498db;
-            color: #fff;
-        }
-        
-        .tab-content {
-            display: none;
-            padding: 20px;
-            background-color: #fff;
+        .section {
+            margin-bottom: 2rem;
+            background-color: white;
+            padding: 1rem;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
         }
         
-        .tab-content.active {
-            display: block;
+        h2 {
+            color: #2c3e50;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
         }
         
-        .screen-grid {
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 1rem;
         }
         
-        .screen-item {
-            background-color: #fff;
+        .card {
+            background-color: white;
             border-radius: 5px;
             overflow: hidden;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
         }
         
-        .screen-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .screen-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .screen-info {
-            padding: 15px;
-        }
-        
-        .screen-title {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        
-        .screen-desc {
-            font-size: 14px;
-            color: #666;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-        }
-        
-        .modal-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: #fff;
-            font-size: 30px;
-            cursor: pointer;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #2c3e50;
-            color: #fff;
-            margin-top: 20px;
-        }
-
-        /* SVG Placeholder Styles */
-        .svg-placeholder {
-            width: 100%;
+        .placeholder {
             height: 200px;
             background-color: #f0f0f0;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            color: #333333;
+            font-size: 1rem;
+            color: #333;
+        }
+        
+        .card-content {
+            padding: 1rem;
+        }
+        
+        .card-title {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .card-desc {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
             text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>Kanteeno UI Screen Viewer</h1>
-            <p>View and explore UI screens for the Kanteeno project</p>
-        </div>
+        <h1>Kanteeno UI Screen Viewer</h1>
+        <p>View and explore UI screens for the Kanteeno project</p>
     </header>
     
     <div class="container">
-        <div class="tabs">
-            <button class="tab-btn active" data-tab="guest-app">Guest App UI</button>
-            <button class="tab-btn" data-tab="admin-portal">Admin Portal UI</button>
-            <button class="tab-btn" data-tab="chefs-magic">Chef's Magic UI</button>
-            <button class="tab-btn" data-tab="react-impl">React Implementation</button>
-        </div>
-        
-        <div id="guest-app" class="tab-content active">
-            <h2>Guest App UI Screens</h2>
-            <div class="screen-grid">
-                <!-- Login Screen -->
-                <div class="screen-item">
-                    <div class="svg-placeholder">Login Screen Placeholder</div>
-                    <div class="screen-info">
-                        <h3 class="screen-title">Login Screen</h3>
-                        <p class="screen-desc">User login interface</p>
+        <div class="section">
+            <h2>Guest App UI</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="placeholder">Login Screen</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Login Screen</h3>
+                        <p class="card-desc">User login interface</p>
                     </div>
                 </div>
                 
-                <!-- Dashboard -->
-                <div class="screen-item">
-                    <div class="svg-placeholder">Dashboard Placeholder</div>
-                    <div class="screen-info">
-                        <h3 class="screen-title">Home Dashboard</h3>
-                        <p class="screen-desc">Main dashboard view</p>
+                <div class="card">
+                    <div class="placeholder">Dashboard</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Home Dashboard</h3>
+                        <p class="card-desc">Main dashboard view</p>
                     </div>
                 </div>
                 
-                <!-- Menu -->
-                <div class="screen-item">
-                    <div class="svg-placeholder">Menu Browsing Placeholder</div>
-                    <div class="screen-info">
-                        <h3 class="screen-title">Menu Browsing</h3>
-                        <p class="screen-desc">Browse restaurant menu</p>
+                <div class="card">
+                    <div class="placeholder">Menu Browsing</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Menu Browsing</h3>
+                        <p class="card-desc">Browse restaurant menu</p>
                     </div>
                 </div>
                 
-                <!-- Order -->
-                <div class="screen-item">
-                    <div class="svg-placeholder">Order Placement Placeholder</div>
-                    <div class="screen-info">
-                        <h3 class="screen-title">Order Placement</h3>
-                        <p class="screen-desc">Place food orders</p>
+                <div class="card">
+                    <div class="placeholder">Order Placement</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Order Placement</h3>
+                        <p class="card-desc">Place food orders</p>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div id="admin-portal" class="tab-content">
-            <h2>Admin Portal UI Screens</h2>
-            <div class="screen-grid">
-                <!-- Admin Dashboard -->
-                <div class="screen-item">
-                    <div class="svg-placeholder">Admin Dashboard Placeholder</div>
-                    <div class="screen-info">
-                        <h3 class="screen-title">Admin Dashboard</h3>
-                        <p class="screen-desc">Admin overview dashboard</p>
+        <div class="section">
+            <h2>Admin Portal UI</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="placeholder">Admin Dashboard</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Admin Dashboard</h3>
+                        <p class="card-desc">Admin overview dashboard</p>
                     </div>
                 </div>
                 
-                <!-- User Management -->
-                <div class="screen-item">
-                    <div class="svg-placeholder">User Management Placeholder</div>
-                    <div class="screen-info">
-                        <h3 class="screen-title">User Management</h3>
-                        <p class="screen-desc">Manage system users</p>
+                <div class="card">
+                    <div class="placeholder">User Management</div>
+                    <div class="card-content">
+                        <h3 class="card-title">User Management</h3>
+                        <p class="card-desc">Manage system users</p>
                     </div>
                 </div>
                 
-                <!-- Settings -->
-                <div class="screen-item">
-                    <div class="svg-placeholder">Restaurant Settings Placeholder</div>
-                    <div class="screen-info">
-                        <h3 class="screen-title">Restaurant Settings</h3>
-                        <p class="screen-desc">Configure restaurant settings</p>
+                <div class="card">
+                    <div class="placeholder">Restaurant Settings</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Restaurant Settings</h3>
+                        <p class="card-desc">Configure restaurant settings</p>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div id="chefs-magic" class="tab-content">
-            <h2>Chef's Magic UI Screens</h2>
-            <div class="screen-grid">
-                <!-- Kitchen Dashboard -->
-                <div class="screen-item">
-                    <div class="svg-placeholder">Kitchen Dashboard Placeholder</div>
-                    <div class="screen-info">
-                        <h3 class="screen-title">Kitchen Dashboard</h3>
-                        <p class="screen-desc">Kitchen overview</p>
+        <div class="section">
+            <h2>Chef's Magic UI</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="placeholder">Kitchen Dashboard</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Kitchen Dashboard</h3>
+                        <p class="card-desc">Kitchen overview</p>
                     </div>
                 </div>
                 
-                <!-- Order Queue -->
-                <div class="screen-item">
-                    <div class="svg-placeholder">Order Queue Placeholder</div>
-                    <div class="screen-info">
-                        <h3 class="screen-title">Order Queue</h3>
-                        <p class="screen-desc">Incoming food orders</p>
+                <div class="card">
+                    <div class="placeholder">Order Queue</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Order Queue</h3>
+                        <p class="card-desc">Incoming food orders</p>
                     </div>
                 </div>
                 
-                <!-- Inventory -->
-                <div class="screen-item">
-                    <div class="svg-placeholder">Inventory Management Placeholder</div>
-                    <div class="screen-info">
-                        <h3 class="screen-title">Inventory Management</h3>
-                        <p class="screen-desc">Manage food inventory</p>
+                <div class="card">
+                    <div class="placeholder">Inventory Management</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Inventory Management</h3>
+                        <p class="card-desc">Manage food inventory</p>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div id="react-impl" class="tab-content">
-            <h2>React Implementation Screens</h2>
-            <div class="screen-grid">
-                <!-- Component Structure -->
-                <div class="screen-item">
-                    <div class="svg-placeholder">Component Structure Placeholder</div>
-                    <div class="screen-info">
-                        <h3 class="screen-title">Component Structure</h3>
-                        <p class="screen-desc">React component hierarchy</p>
+        <div class="section">
+            <h2>React Implementation</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="placeholder">Component Structure</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Component Structure</h3>
+                        <p class="card-desc">React component hierarchy</p>
                     </div>
                 </div>
                 
-                <!-- State Management -->
-                <div class="screen-item">
-                    <div class="svg-placeholder">State Management Placeholder</div>
-                    <div class="screen-info">
-                        <h3 class="screen-title">State Management</h3>
-                        <p class="screen-desc">Application state flow</p>
+                <div class="card">
+                    <div class="placeholder">State Management</div>
+                    <div class="card-content">
+                        <h3 class="card-title">State Management</h3>
+                        <p class="card-desc">Application state flow</p>
                     </div>
                 </div>
             </div>
@@ -319,29 +212,7 @@
     </div>
     
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Kanteeno Project. All rights reserved.</p>
-        </div>
+        <p>&copy; 2025 Kanteeno Project. All rights reserved.</p>
     </footer>
-    
-    <script>
-        // Tab switching functionality
-        document.querySelectorAll('.tab-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all tabs
-                document.querySelectorAll('.tab-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                document.querySelectorAll('.tab-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                
-                // Add active class to clicked tab
-                button.classList.add('active');
-                const tabId = button.getAttribute('data-tab');
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-    </script>
 </body>
 </html>
