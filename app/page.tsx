@@ -7,9 +7,16 @@ export default function Home() {
     <div className="container mx-auto py-10 px-4">
       <header className="mb-10 text-center">
         <h1 className="text-4xl font-bold mb-2">Kanteeno UI Viewer</h1>
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground mb-2">
           Browse, download, and contribute UI components for the Kanteeno ecosystem
         </p>
+        <a 
+          href="/zip-upload-guide.md" 
+          target="_blank" 
+          className="text-sm text-primary hover:underline"
+        >
+          How to upload components
+        </a>
       </header>
 
       <Tabs defaultValue="user-app" className="w-full">
@@ -37,4 +44,3 @@ export default function Home() {
     </div>
   )
 }
-

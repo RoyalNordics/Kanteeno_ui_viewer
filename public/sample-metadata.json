@@ -1,0 +1,32 @@
+{
+  "components": [
+    {
+      "id": "login-screen",
+      "name": "Login Screen",
+      "description": "User authentication screen with social login options",
+      "category": "user-app",
+      "thumbnail": "thumbnails/user-app/login-screen.svg"
+    },
+    {
+      "id": "menu-browser",
+      "name": "Menu Browser",
+      "description": "Browse restaurant menu items with filtering",
+      "category": "user-app",
+      "thumbnail": "thumbnails/user-app/menu-browser.svg"
+    },
+    {
+      "id": "kitchen-dashboard",
+      "name": "Kitchen Dashboard",
+      "description": "Overview of current orders and kitchen status",
+      "category": "chefs-magic",
+      "thumbnail": "thumbnails/chefs-magic/kitchen-dashboard.svg"
+    },
+    {
+      "id": "analytics-dashboard",
+      "name": "Analytics Dashboard",
+      "description": "Business performance metrics and charts",
+      "category": "admin",
+      "thumbnail": "thumbnails/admin/analytics-dashboard.svg"
+    }
+  ]
+}
