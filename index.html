@@ -52,14 +52,19 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
-        .placeholder {
-            height: 200px;
+        .card-image {
+            height: 300px;
             background-color: #f0f0f0;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1rem;
-            color: #333;
+            overflow: hidden;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
         
         .card-content {
@@ -98,7 +103,9 @@
             <h2>Guest App UI</h2>
             <div class="grid">
                 <div class="card">
-                    <div class="placeholder">Login Screen</div>
+                    <div class="card-image">
+                        <img src="docs/charts/guest-app/login.svg" alt="Login Screen">
+                    </div>
                     <div class="card-content">
                         <h3 class="card-title">Login Screen</h3>
                         <p class="card-desc">User login interface</p>
@@ -106,7 +113,9 @@
                 </div>
                 
                 <div class="card">
-                    <div class="placeholder">Dashboard</div>
+                    <div class="card-image">
+                        <img src="docs/charts/guest-app/dashboard.svg" alt="Dashboard">
+                    </div>
                     <div class="card-content">
                         <h3 class="card-title">Home Dashboard</h3>
                         <p class="card-desc">Main dashboard view</p>
@@ -114,7 +123,9 @@
                 </div>
                 
                 <div class="card">
-                    <div class="placeholder">Menu Browsing</div>
+                    <div class="card-image">
+                        <img src="docs/charts/guest-app/menu.svg" alt="Menu Browsing">
+                    </div>
                     <div class="card-content">
                         <h3 class="card-title">Menu Browsing</h3>
                         <p class="card-desc">Browse restaurant menu</p>
@@ -122,7 +133,9 @@
                 </div>
                 
                 <div class="card">
-                    <div class="placeholder">Order Placement</div>
+                    <div class="card-image">
+                        <img src="docs/charts/guest-app/order.svg" alt="Order Placement">
+                    </div>
                     <div class="card-content">
                         <h3 class="card-title">Order Placement</h3>
                         <p class="card-desc">Place food orders</p>
@@ -135,7 +148,9 @@
             <h2>Admin Portal UI</h2>
             <div class="grid">
                 <div class="card">
-                    <div class="placeholder">Admin Dashboard</div>
+                    <div class="card-image">
+                        <img src="docs/charts/admin-portal/dashboard.svg" alt="Admin Dashboard">
+                    </div>
                     <div class="card-content">
                         <h3 class="card-title">Admin Dashboard</h3>
                         <p class="card-desc">Admin overview dashboard</p>
@@ -143,7 +158,9 @@
                 </div>
                 
                 <div class="card">
-                    <div class="placeholder">User Management</div>
+                    <div class="card-image">
+                        <img src="docs/charts/admin-portal/users.svg" alt="User Management">
+                    </div>
                     <div class="card-content">
                         <h3 class="card-title">User Management</h3>
                         <p class="card-desc">Manage system users</p>
@@ -151,7 +168,9 @@
                 </div>
                 
                 <div class="card">
-                    <div class="placeholder">Restaurant Settings</div>
+                    <div class="card-image">
+                        <img src="docs/charts/admin-portal/settings.svg" alt="Restaurant Settings">
+                    </div>
                     <div class="card-content">
                         <h3 class="card-title">Restaurant Settings</h3>
                         <p class="card-desc">Configure restaurant settings</p>
@@ -164,7 +183,9 @@
             <h2>Chef's Magic UI</h2>
             <div class="grid">
                 <div class="card">
-                    <div class="placeholder">Kitchen Dashboard</div>
+                    <div class="card-image">
+                        <img src="docs/charts/chefs-magic/dashboard.svg" alt="Kitchen Dashboard">
+                    </div>
                     <div class="card-content">
                         <h3 class="card-title">Kitchen Dashboard</h3>
                         <p class="card-desc">Kitchen overview</p>
@@ -172,7 +193,9 @@
                 </div>
                 
                 <div class="card">
-                    <div class="placeholder">Order Queue</div>
+                    <div class="card-image">
+                        <img src="docs/charts/chefs-magic/orders.svg" alt="Order Queue">
+                    </div>
                     <div class="card-content">
                         <h3 class="card-title">Order Queue</h3>
                         <p class="card-desc">Incoming food orders</p>
@@ -180,7 +203,9 @@
                 </div>
                 
                 <div class="card">
-                    <div class="placeholder">Inventory Management</div>
+                    <div class="card-image">
+                        <img src="docs/charts/chefs-magic/inventory.svg" alt="Inventory Management">
+                    </div>
                     <div class="card-content">
                         <h3 class="card-title">Inventory Management</h3>
                         <p class="card-desc">Manage food inventory</p>
@@ -193,7 +218,9 @@
             <h2>React Implementation</h2>
             <div class="grid">
                 <div class="card">
-                    <div class="placeholder">Component Structure</div>
+                    <div class="card-image">
+                        <img src="docs/charts/react-impl/components.svg" alt="Component Structure">
+                    </div>
                     <div class="card-content">
                         <h3 class="card-title">Component Structure</h3>
                         <p class="card-desc">React component hierarchy</p>
@@ -201,7 +228,9 @@
                 </div>
                 
                 <div class="card">
-                    <div class="placeholder">State Management</div>
+                    <div class="card-image">
+                        <img src="docs/charts/react-impl/state.svg" alt="State Management">
+                    </div>
                     <div class="card-content">
                         <h3 class="card-title">State Management</h3>
                         <p class="card-desc">Application state flow</p>
