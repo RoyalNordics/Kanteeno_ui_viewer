@@ -1,0 +1,23 @@
+{
+  "name": "kanteeno-ui-viewer",
+  "version": "1.0.0",
+  "description": "UI Screen Viewer for the Kanteeno project",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve ."
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RoyalNordics/Kanteeno_ui_viewer.git"
+  },
+  "keywords": [
+    "kanteeno",
+    "ui",
+    "viewer"
+  ],
+  "author": "",
+  "license": "ISC"
+}

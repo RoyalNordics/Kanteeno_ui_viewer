@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanteeno UI Screen Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        h1 {
+            margin-bottom: 10px;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .tab-btn {
+            padding: 15px 20px;
+            background-color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .tab-btn:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .tab-btn.active {
+            background-color: #3498db;
+            color: #fff;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .screen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .screen-item {
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .screen-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .screen-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .screen-info {
+            padding: 15px;
+        }
+        
+        .screen-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .screen-desc {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .modal-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: #fff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Kanteeno UI Screen Viewer</h1>
+            <p>View and explore UI screens for the Kanteeno project</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="guest-app">Guest App UI</button>
+            <button class="tab-btn" data-tab="admin-portal">Admin Portal UI</button>
+            <button class="tab-btn" data-tab="chefs-magic">Chef's Magic UI</button>
+            <button class="tab-btn" data-tab="react-impl">React Implementation</button>
+        </div>
+        
+        <div id="guest-app" class="tab-content active">
+            <h2>Guest App UI Screens</h2>
+            <div class="screen-grid" id="guest-app-grid">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+        
+        <div id="admin-portal" class="tab-content">
+            <h2>Admin Portal UI Screens</h2>
+            <div class="screen-grid" id="admin-portal-grid">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+        
+        <div id="chefs-magic" class="tab-content">
+            <h2>Chef's Magic UI Screens</h2>
+            <div class="screen-grid" id="chefs-magic-grid">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+        
+        <div id="react-impl" class="tab-content">
+            <h2>React Implementation Screens</h2>
+            <div class="screen-grid" id="react-impl-grid">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="image-modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img src="" alt="UI Screen" class="modal-img" id="modal-image">
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kanteeno Project. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Sample data structure for UI screens
+        const uiScreens = {
+            'guest-app': [
+                // These will be populated with actual images from docs/charts/
+                // Example: { title: 'Login Screen', image: 'docs/charts/guest-app/login.svg', description: 'User login interface' }
+            ],
+            'admin-portal': [
+                // Admin portal screens
+            ],
+            'chefs-magic': [
+                // Chef's Magic screens
+            ],
+            'react-impl': [
+                // React implementation screens
+            ]
+        };
+        
+        // Function to load images from the docs/charts directory
+        function loadImagesFromDirectory() {
+            // This would typically be done server-side or with a file listing API
+            // For now, we'll simulate it with placeholder data
+            
+            // In a real implementation, you would scan the docs/charts directory
+            // and populate the uiScreens object with the actual images
+            
+            // For demonstration purposes, we'll add some placeholder items
+            addPlaceholderItems();
+            
+            // Render the initial tab
+            renderScreens('guest-app');
+        }
+        
+        // Add placeholder items for demonstration
+        function addPlaceholderItems() {
+            // This function would be replaced with actual image loading logic
+            // For now, we'll add placeholders to show the structure
+            
+            // Guest App placeholders
+            uiScreens['guest-app'] = [
+                { title: 'Login Screen', image: 'docs/charts/guest-app/login.svg', description: 'User login interface' },
+                { title: 'Home Dashboard', image: 'docs/charts/guest-app/dashboard.svg', description: 'Main dashboard view' },
+                { title: 'Menu Browsing', image: 'docs/charts/guest-app/menu.svg', description: 'Browse restaurant menu' },
+                { title: 'Order Placement', image: 'docs/charts/guest-app/order.svg', description: 'Place food orders' }
+            ];
+            
+            // Admin Portal placeholders
+            uiScreens['admin-portal'] = [
+                { title: 'Admin Dashboard', image: 'docs/charts/admin-portal/dashboard.svg', description: 'Admin overview dashboard' },
+                { title: 'User Management', image: 'docs/charts/admin-portal/users.svg', description: 'Manage system users' },
+                { title: 'Restaurant Settings', image: 'docs/charts/admin-portal/settings.svg', description: 'Configure restaurant settings' }
+            ];
+            
+            // Chef's Magic placeholders
+            uiScreens['chefs-magic'] = [
+                { title: 'Kitchen Dashboard', image: 'docs/charts/chefs-magic/dashboard.svg', description: 'Kitchen overview' },
+                { title: 'Order Queue', image: 'docs/charts/chefs-magic/orders.svg', description: 'Incoming food orders' },
+                { title: 'Inventory Management', image: 'docs/charts/chefs-magic/inventory.svg', description: 'Manage food inventory' }
+            ];
+            
+            // React Implementation placeholders
+            uiScreens['react-impl'] = [
+                { title: 'Component Structure', image: 'docs/charts/react-impl/components.svg', description: 'React component hierarchy' },
+                { title: 'State Management', image: 'docs/charts/react-impl/state.svg', description: 'Application state flow' }
+            ];
+        }
+        
+        // Function to render screens for a specific tab
+        function renderScreens(tabId) {
+            const gridElement = document.getElementById(`${tabId}-grid`);
+            gridElement.innerHTML = '';
+            
+            if (uiScreens[tabId] && uiScreens[tabId].length > 0) {
+                uiScreens[tabId].forEach(screen => {
+                    const screenElement = document.createElement('div');
+                    screenElement.className = 'screen-item';
+                    
+                    screenElement.innerHTML = `
+                        <img src="${screen.image}" alt="${screen.title}" class="screen-img">
+                        <div class="screen-info">
+                            <h3 class="screen-title">${screen.title}</h3>
+                            <p class="screen-desc">${screen.description}</p>
+                        </div>
+                    `;
+                    
+                    // Add click event to open modal
+                    screenElement.addEventListener('click', () => {
+                        openImageModal(screen.image, screen.title);
+                    });
+                    
+                    gridElement.appendChild(screenElement);
+                });
+            } else {
+                gridElement.innerHTML = '<p>No screens available for this section.</p>';
+            }
+        }
+        
+        // Function to open the image modal
+        function openImageModal(imageSrc, imageTitle) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image');
+            
+            modalImg.src = imageSrc;
+            modalImg.alt = imageTitle;
+            
+            modal.style.display = 'flex';
+        }
+        
+        // Function to close the image modal
+        function closeImageModal() {
+            const modal = document.getElementById('image-modal');
+            modal.style.display = 'none';
+        }
+        
+        // Tab switching functionality
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+                
+                // Render screens for the selected tab
+                renderScreens(tabId);
+            });
+        });
+        
+        // Close modal when clicking the close button
+        document.querySelector('.close-modal').addEventListener('click', closeImageModal);
+        
+        // Close modal when clicking outside the image
+        document.getElementById('image-modal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeImageModal();
+            }
+        });
+        
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', loadImagesFromDirectory);
+    </script>
+</body>
+</html>
