@@ -1,49 +1,57 @@
 # Kanteeno UI Viewer
 
-A static site that displays UI screens for the Kanteeno project.
+A modern UI component viewer for the Kanteeno project built with Next.js and Tailwind CSS.
 
-## Overview
+## Features
 
-This UI viewer allows you to browse and view UI screens for different parts of the Kanteeno project:
-- Guest App UI
-- Admin Portal UI
-- Chef's Magic UI
-- React Implementation
+- Browse UI components by category (User App, Chefs Magic, Admin App)
+- Preview components with code view
+- Download component code
+- Search functionality
+- Modern, responsive design
 
 ## Project Structure
 
-- `index.html`: The main HTML file that displays the UI screens
-- `docs/charts/`: Directory containing all the image files (SVG and JPG) used in the UI screens
-- `package.json`: Contains dependencies and scripts for the project
-- `.gitignore`: Specifies files to ignore in Git
+- `app/`: Next.js app directory containing pages and layouts
+- `components/`: React components including UI components
+- `public/`: Static assets
+- `styles/`: Global CSS styles
+- `lib/`: Utility functions
+- `hooks/`: Custom React hooks
 
 ## Local Development
 
 To run the project locally:
 
 1. Install dependencies:
-```
-npm install
+```bash
+npm install --legacy-peer-deps
 ```
 
 2. Start the development server:
-```
-npm start
+```bash
+npm run dev
 ```
 
 3. Open your browser and navigate to `http://localhost:3000`
 
-## Adding UI Screens
+## Legacy Static Viewer
 
-To add new UI screens to the viewer:
+The original static HTML viewer is still available:
 
-1. Place your image files (preferably SVG) in the appropriate subdirectory under `docs/charts/`:
-   - Guest App UI: `docs/charts/guest-app/`
-   - Admin Portal UI: `docs/charts/admin-portal/`
-   - Chef's Magic UI: `docs/charts/chefs-magic/`
-   - React Implementation: `docs/charts/react-impl/`
+```bash
+npm run serve-static
+```
 
-2. The UI viewer will automatically detect and display the images.
+This will serve the static HTML version at `http://localhost:3000`.
+
+## Adding New Components
+
+To add new UI components:
+
+1. Update the mockComponents object in `components/component-grid.tsx`
+2. Add actual component code to replace the mockReactCode in `components/component-card.tsx`
+3. Add actual UI designs as SVG or PNG files in the `public` directory
 
 ## Deployment
 
