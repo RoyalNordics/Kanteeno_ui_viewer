@@ -7,13 +7,13 @@ export default function Home() {
     <div className="container mx-auto py-10 px-4">
       <header className="mb-10 text-center">
         <h1 className="text-4xl font-bold mb-2">Kanteeno UI Viewer</h1>
-        <p className="text-muted-foreground mb-2">
+        <p className="text-muted-foreground">
           Browse, download, and contribute UI components for the Kanteeno ecosystem
         </p>
         <a 
           href="/zip-upload-guide.md" 
           target="_blank" 
-          className="text-sm text-primary hover:underline"
+          className="text-sm text-primary hover:underline mt-2 inline-block"
         >
           How to upload components
         </a>
